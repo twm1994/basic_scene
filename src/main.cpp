@@ -8,8 +8,9 @@
 // #include "driverChoice.h"
 #include "utils.h"
 #include "player.h"
-using namespace irr;
 #include "eventreceiverwarper.h"
+
+using namespace irr;
 
 int main(){
 	video::E_DRIVER_TYPE driverType=video::EDT_OPENGL;
@@ -18,7 +19,7 @@ int main(){
 
 	u16 screenW=800;
 	u16 screenH=600;
-	IrrlichtDevice* device=createDevice(driverType,core::dimension2d<u32>(screenW, screenH),16,false,false,false,&receiver);
+	IrrlichtDevice* device=createDevice(driverType,core::dimension2d<u32>(screenW, screenH),16,false,false,false,0);
 
 	if (device==0) return 1; // could not create selected driver.
 
@@ -26,7 +27,7 @@ int main(){
 	scene::ISceneManager* smgr=device->getSceneManager();
 
 	/*
-	Create the player_node which will be moved with the WSAD keys. As there is no dynamic lights in this scene
+	Create the player which will be moved with the WSAD keys. As there is no dynamic lights in this scene
 	lighting for each model is disabled (otherwise the models would be black).
 	*/
 	Player *player=new Player(smgr->getRootSceneNode(),smgr);
@@ -35,33 +36,14 @@ int main(){
 		player->setMaterialFlag(video::EMF_LIGHTING,false);
 	}
 	receiver.setControlPlayer(player);
+	device->setEventReceiver(&receiver);
+
 	Player *dummy_player=new Player(smgr->getRootSceneNode(),smgr);
 	if (dummy_player){
 		dummy_player->setPosition(v3f(0,0,130));
 		dummy_player->setMaterialFlag(video::EMF_LIGHTING,false);
 	}
-	// player_node = smgr->addAnimatedMeshSceneNode(smgr->getMesh("../resource/character.b3d"));
-	// if (player_node)
-	// {
-	// 	player_node->setPosition(v3f(0,0,30));
-	// 	player_node->setRotation(v3f(0, 0, 0));
-	// 	player_node->setMaterialTexture(0, driver->getTexture("../resource/character.png"));
-	// 	player_node->setMaterialFlag(video::EMF_LIGHTING, false);
-	// 	player_node->setFrameLoop(0, 80);
-	// 	player_node->setAnimationSpeed(15);
-	// 	player_node->setScale(v3f(1, 1, 1));
-	// }
-	// scene::IAnimatedMeshSceneNode * node1 = smgr->addAnimatedMeshSceneNode(smgr->getMesh("../resource/character.b3d"));
-	// if (node1)
-	// {
-	// 	node1->setPosition(v3f(0, 0, 130));
-	// 	node1->setRotation(v3f(0, 0, 0));
-	// 	node1->setMaterialTexture(0, driver->getTexture("../resource/character.png"));
-	// 	node1->setMaterialFlag(video::EMF_LIGHTING, false);
-	// 	node1->setFrameLoop(0, 80);
-	// 	node1->setAnimationSpeed(15);
-	// 	node1->setScale(v3f(1, 1, 1));
-	// };
+
 	scene::ICameraSceneNode* camera=smgr->addCameraSceneNode(
 		0, // Camera parent
 		v3f(BS*100,BS*2,BS*100), // Look from

@@ -41,6 +41,6 @@ private:
   bool KeyIsDown[KEY_KEY_CODES_COUNT];
   bool walking=false;
   Player *player=nullptr;
-}
+};
 
 #endif

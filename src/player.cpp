@@ -12,7 +12,7 @@ Player::Player(scene::ISceneNode* parent,scene::ISceneManager* smgr):
   avatar_node=smgr->addAnimatedMeshSceneNode(avatar,this);
   if(avatar_node){
     avatar_node->setMaterialFlag(video::EMF_LIGHTING,false);
-    avatar_node->setMaterialTexture(0,driver->getTexture("../daresourceta/character.png"));
+    avatar_node->setMaterialTexture(0,driver->getTexture("../resource/character.png"));
     avatar_node->setScale(v3f(1,1,1));
     avatar_node->setPosition(v3f(0,0,0));
     avatar_node->setRotation(v3f(0,0,0));
@@ -44,4 +44,3 @@ void Player::move(f32 dtime){
   f32 d=(float)BS*0.15;
   setPosition(position);
 }
-
