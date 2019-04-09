@@ -51,7 +51,7 @@ int main(){
 		-1 // Camera ID
 	);
 	if (camera==NULL) return 1;
-	camera->setFOV(PI/2.5);
+	camera->setFOV((float)FOV_ANGLE);
 	// Just so big a value that everything rendered is visible
 	camera->setFarValue(BS*1000);
 
@@ -87,7 +87,7 @@ int main(){
 		u32 time=device->getTimer()->getTime();
 		f32 dtime; // in seconds
 		if (time>lasttime)
-			dtime=(time-lasttime)/1000.0;
+			dtime=(time-lasttime)/(float)1000.0;
 		else
 			dtime=0;
 		lasttime=time;
@@ -161,10 +161,10 @@ int main(){
 
 		s32 dx=device->getCursorControl()->getPosition().X-screenW/2;
 		s32 dy=device->getCursorControl()->getPosition().Y-screenH/2;
-		camera_yaw-=dx*0.2;
-		camera_pitch+=dy*0.2;
-		if (camera_pitch<-89.9)camera_pitch=-89.9; // look up
-		if (camera_pitch>89.9)camera_pitch=89.9; // look down
+		camera_yaw-=dx*(float)0.2;
+		camera_pitch+=dy*(float)0.2;
+		if (camera_pitch<-89.9)camera_pitch=-(float)89.9; // look up
+		if (camera_pitch>89.9)camera_pitch=(float)89.9; // look down
 		device->getCursorControl()->setPosition(screenW/2,screenH/2);
 
 		v3f camera_direction = v3f(0,0,1);
