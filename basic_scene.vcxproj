@@ -20,8 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\eventreceiverwarper.h" />
     <ClInclude Include="include\player.h" />
     <ClInclude Include="include\utils.h" />
   </ItemGroup>

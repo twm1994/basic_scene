@@ -16,4 +16,7 @@ typedef core::vector3d<s32> v3s32;
 #define WALK_ACCELERATION (4.0 * BS)
 #define WALKSPEED_MAX (4.0 * BS)
 #define PI 3.14159
+#define PLAYER_RADIUS (BS*0.3)
+#define PLAYER_HEIGHT (BS*1.7)
+#define PLAYER_EYE_HEIGHT (BS*1.65)
 #endif
