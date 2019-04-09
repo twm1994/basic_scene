@@ -1,0 +1,35 @@
+## Generic ignorable patterns and files
+.*
+!.gitignore
+*~
+*bak*
+tags
+*.vim
+*.orig
+*.rej
+
+## Files related to minetest development cycle
+/*.patch
+
+## Non-static Minetest directories
+/bin
+
+
+## Build files
+# CMakeFiles
+# Makefile
+# !/Makefile
+# cmake_install.cmake
+# CMakeCache.txt
+# CPackConfig.cmake
+# CPackSourceConfig.cmake
+*.cbp
+*.o
+*.a
+
+## Dependences and documents
+*.htm
+
+## Dynamic files
+Debug/
+Release/
